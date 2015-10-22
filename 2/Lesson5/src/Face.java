@@ -18,9 +18,8 @@ public class Face {
     
     public void draw(){
         pen.stroke(0);//black outline
-        pen.fill(color.getRed(),color.getGreen(),color.getBlue());//head color
+        pen.fill(color.getRed(),color.getGreen(),color.getBlue());
         drawCircle(xLoc, yLoc, diameter, diameter);
-        //yellow eyes
         pen.fill(255,0,0);
         drawCircle(xLoc-diameter/5, yLoc-diameter/5, diameter/4, diameter/4);
         drawCircle(xLoc+diameter/5, yLoc-diameter/5, diameter/4, diameter/4);
