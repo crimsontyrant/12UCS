@@ -90,16 +90,16 @@ public class GuessingGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnguessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguessActionPerformed
-        int myg;
-        myg=Integer.parseInt(txtguess.getText());
-        if(gm.setGuess(myg)){
+        int gu;
+        gu=Integer.parseInt(txtguess.getText());
+        if(gm.setGuess(gu)){
             lblhint.setText(gm.giveHint());
             lblguess.setText(""+gm.getNumGuesses());
             if(gm.giveHint()=="Correct!"){
                 btnguess.setEnabled(false);
             }
         }
-        else lblhint.setText("Invailed Guess");
+        else lblhint.setText("Invalid Guess");
         txtguess.setText("");
     }//GEN-LAST:event_btnguessActionPerformed
 
