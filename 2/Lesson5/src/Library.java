@@ -2,7 +2,7 @@ import hsa.*;
 public class Library {
     public static void main(String[] args) {
         Console c;
-        c =new Console(35,80);
+        c =new Console(30,70);
         Book b[] = new Book[5];
         b[0] = new Book("From Russia With Love","Greg Hines");
         b[1] = new Book("Living Smart","Rita Langill");
@@ -11,7 +11,7 @@ public class Library {
         b[4] = new Book("To Be A Model","Lisa Lahey");
         c.println("Available books:\n");
         for (int i = 0; i < 5; i++) {
-            c.println("Book 1: " + b[i]);
+            c.println("Book " + (i+1) + ": " + b[i]);
         }
         Patron p=new Patron("Kick Neenan");
         c.println("Lending 4 books to "+p.getName());
