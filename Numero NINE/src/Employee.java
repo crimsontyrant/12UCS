@@ -2,12 +2,17 @@
 public abstract class Employee {
     protected double rate, hours;
     protected String name;
+    protected static double tot=0;
     
     public Employee(){
-        name="";
-        rate=0;
-        hours=0;
+       this("",0,0);
     }
+    public Employee(String a, double b, double c){
+        name=a;
+        rate=b;
+        hours=c;
+    }
+    
     
      public boolean setRate(double r){
         boolean rateok= (r>=6.25 && r<=30.50);
@@ -34,15 +39,15 @@ public abstract class Employee {
         else return false;
     }
     //4 methods that return the rules to follow
-    public String getNameRules(){
+    public static String getNameRules(){
         return "Name must not be blank";
     }
     
-    public String getHourRules(){
+    public static String getHourRules(){
         return "Hours must be from 1 to 60";
     }
     
-    public String getRateRules(){
+    public static String getRateRules(){
         return "Rate must be from 6.25 to 30.50";
     }
     
@@ -52,6 +57,9 @@ public abstract class Employee {
     
     public abstract double getPay();
     
+    public static double getTotalPay(){
+        return tot;
+    }
 }
     
     
