@@ -85,28 +85,44 @@ public class NHL_GUI extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        mnuexit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Button-Delete-icon.png"))); // NOI18N
         mnuexit.setText("Exit");
+        mnuexit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuexitActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuexit);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
 
-        mnudel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DeleteIcon16.png"))); // NOI18N
         mnudel.setText("Delete Player");
+        mnudel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnudelActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnudel);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Filter");
 
-        mnuteam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hockey stick and puck.png"))); // NOI18N
         mnuteam.setText("By Selected Team");
+        mnuteam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuteamActionPerformed(evt);
+            }
+        });
         jMenu3.add(mnuteam);
 
-        mnuall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/list_view.png"))); // NOI18N
         mnuall.setText("Show All");
+        mnuall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuallActionPerformed(evt);
+            }
+        });
         jMenu3.add(mnuall);
 
         jMenuBar1.add(jMenu3);
@@ -156,6 +172,48 @@ public class NHL_GUI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_lstplayersMouseClicked
+
+    private void mnuexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuexitActionPerformed
+        System.exit(1);
+    }//GEN-LAST:event_mnuexitActionPerformed
+
+    private void mnudelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnudelActionPerformed
+        //which item are we looking at
+        int loc = lstplayers.getSelectedIndex();
+        //which name is that
+        String name= String.valueOf(model.getElementAt(loc));
+        Player temp= new Player(name,null,null,0,0);
+        //also remove from visual list
+        model.removeElementAt(loc);
+        //find them in array list
+        loc= search(list, temp);
+        //delete them
+        list.remove(loc);
+    }//GEN-LAST:event_mnudelActionPerformed
+
+    private void mnuteamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuteamActionPerformed
+        int item= lstplayers.getSelectedIndex();
+        String s= (String)(model.getElementAt(item));
+        Player temp= new Player(s,"","",0,0);
+        int loc= search(list, temp);
+        String team=(list.get(loc).getTeam());
+        model.clear();
+        for(int x=0; x<list.size(); x++){
+            if(list.get(x).getTeam().equals(team)){
+                model.addElement(list.get(x).getName());
+                lstplayers.setModel(model);
+            }
+        }
+    }//GEN-LAST:event_mnuteamActionPerformed
+
+    private void mnuallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuallActionPerformed
+        model.clear();
+        for(int x=0; x<list.size(); x++){
+            String nam=list.get(x).getName();
+            model.addElement(nam);
+            lstplayers.setModel(model);
+        }
+    }//GEN-LAST:event_mnuallActionPerformed
 
     public static int search (ArrayList a, Object searchValue){
 	   int left = 0;

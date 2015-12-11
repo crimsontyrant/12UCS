@@ -1,4 +1,4 @@
-import java.io.*;//needed to work with textfiles
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -8,7 +8,6 @@ public class StudentSearch extends javax.swing.JFrame {
     public StudentSearch() {
         initComponents();
         students= new ISSStudent[100];
-        //read data in from file and make 100 students
         FileReader fr;
         String n, a;
         int i;
@@ -20,7 +19,6 @@ public class StudentSearch extends javax.swing.JFrame {
                 a=br.readLine();
                 i=Integer.parseInt(br.readLine());
                 students[x]=new ISSStudent(n,a,i);
-                //txtinfo.append(students[x].toString());
             }
             br.close();
             
@@ -121,7 +119,6 @@ public class StudentSearch extends javax.swing.JFrame {
 
     private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
         int id= Integer.parseInt(txtid.getText());
-        //create a temp student
         ISSStudent temp=new ISSStudent("","",id);
         int loc=search(students,temp);
         if(loc==-1){
